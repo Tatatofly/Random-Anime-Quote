@@ -2,11 +2,40 @@ const quoteRouter = require('express').Router()
 const Quote = require('../models/quote')
 const jwt = require('jsonwebtoken')
 
+const getRandom = async function (max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
 quoteRouter.get('/', async (request, response) => {
   const quotes = await Quote
     .find({})
 
+  response.json(quotes[await getRandom(quotes.length)])
+})
+
+quoteRouter.get('/all', async (request, response) => {
+  const quotes = await Quote
+    .find({})
+
   response.json(quotes)
+})
+
+quoteRouter.get('/:id', async (request, response) => {
+  const quote = await Quote.findById(request.params.id)
+    .catch(error => {
+      console.log(error)
+      response.status(400).send({ error: 'malformatted id' })
+    })
+
+  try {
+    if (quote) {
+      response.json(quote)
+    } else{
+      response.status(404).end()
+    }
+  } catch (exception) {
+    console.log(exception)
+  }
 })
 
 
