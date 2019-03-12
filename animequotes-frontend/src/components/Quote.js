@@ -10,14 +10,15 @@ class Quote extends React.Component {
   render() {
     const { quo, character, anime } = this.props
 
-    const quoteStyle = {
-      // Nothing yet
-    }
-
     return (
-      <div style={quoteStyle}>
-        <p>"{quo}" - {character} @ {anime}</p>
-      </div>  
+      <div>
+        <div className="quoteStyle">
+          <div className="quoteStyleText">
+            <p>“{quo}”</p>
+          </div> 
+        </div> 
+        <p className="align-text-bottom bottom-character"><strong>{character}</strong> - {anime}</p> 
+      </div>
     )
   }
 }

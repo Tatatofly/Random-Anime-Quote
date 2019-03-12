@@ -7,9 +7,9 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      quo: '',
-      character: '', 
-      anime: ''
+      quo: 'No matter where you go, everyone\'s connected.',
+      character: 'Lain Iwakura', 
+      anime: 'Serial Experiments Lain'
     }
   }
 
@@ -24,16 +24,32 @@ class App extends React.Component {
   } 
 
   render() {
+    const getNewQuote = (event) => {
+      event.preventDefault();
+      this.setState({ quo: "..." })
+      quoteService.getRandom().then(quote =>
+        this.setState({ 
+          quo: quote.quo,
+          character: quote.character,
+          anime: quote.anime
+         })
+      )
+    }
+
     const Quotes = () => (
-      <div>
-        <h2>Quote</h2>
+      <div className="raq-header">
+        <h1>Random Anime Quote</h1>
         <Quote quo={this.state.quo} character={this.state.character} anime={this.state.anime} />
+        <button onClick={getNewQuote} className="btn btn-outline-success raq-button">Get another!</button>
       </div>
     )
 
     return (
-      <div className="App">
+      <div className="container">
         <Quotes />
+        <div className="rightCornerLinqs">
+          <a href="https://github.com/Tatatofly/Random-Anime-Quote" target="blank">Tatatofly</a>'s React test project 👺
+      </div>
       </div>
     );
   }
