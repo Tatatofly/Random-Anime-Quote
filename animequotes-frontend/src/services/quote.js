@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = '/api/quotes'
+const baseUrl = 'http://localhost:3003/api/quotes' // Herokuun buildaessa poistetaan alku ja tehdään relatiivinen
 
 const getRandom = () => {
   const request = axios.get(baseUrl)
