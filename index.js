@@ -22,6 +22,7 @@ const extractToken = (request, response, next) => {
 app.use(extractToken)
 app.use(cors())
 app.use(bodyParser.json())
+app.use(express.static('build'))
 
 mongoose.connect(config.mongoUrl, { useNewUrlParser: true })
 mongoose.Promise = global.Promise
