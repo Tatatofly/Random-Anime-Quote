@@ -48,7 +48,7 @@ class App extends React.Component {
       <div className="container">
         <Quotes />
         <div className="rightCornerLinqs">
-          <a href="https://github.com/Tatatofly/Random-Anime-Quote" target="blank">Tatatofly</a>'s React test project 👺
+          <a href="https://github.com/Tatatofly/Random-Anime-Quote" target="blank">Tatatofly</a> 👺
       </div>
       </div>
     );
